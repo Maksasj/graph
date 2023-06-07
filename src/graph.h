@@ -171,6 +171,23 @@ namespace graph {
         }
 
         template<class G>
+        static pair<size_t, vector<int>> vertex_cover_greedy_algorithm_pro(G graph) {
+            size_t s = 0;
+            vector<size_t> vertexSubset;
+
+            while (graph.edge_size() / 2 > 0) {
+                const auto vertex = find_max_deg_vertex(graph);
+                graph.erase_vertex(vertex);
+                vertexSubset.push_back(vertex);
+                ++s;
+            }
+
+            sort(vertexSubset.begin(), vertexSubset.end());
+
+            return {s, vertexSubset};
+        }
+
+        template<class G>
         static size_t vertex_cover_brute_force_algorithm(const G& graph) {
             const size_t graphSize = graph.vertex_size();
             const size_t subsetsCount = 1 << graphSize;
@@ -204,6 +221,46 @@ namespace graph {
             }
 
             return s;
+        }
+
+        template<class G>
+        static pair<size_t, vector<int>> vertex_cover_brute_force_algorithm_pro(const G& graph) {
+            const size_t graphSize = graph.vertex_size();
+            const size_t subsetsCount = 1 << graphSize;
+
+            size_t s = UINT64_MAX;
+            vector<int> out;
+            
+            // Binary string counting, iterating over all subsets of graph vertice set
+            for (size_t mask = 0; mask < subsetsCount; ++mask) {
+                vector<size_t> vertexSubset;
+
+                for (size_t i = 0; i < graphSize; ++i)
+                    if (mask & (1 << i))
+                        vertexSubset.push_back(i);
+
+                sort(vertexSubset.begin(), vertexSubset.end(), std::less<size_t>());
+                vector<size_t> oldVertexSubset = vertexSubset;
+
+                G subGraph = graph;
+
+                for(auto it = vertexSubset.begin(); it != vertexSubset.end(); ++it) {
+                    const auto& vertex = *it;
+                    subGraph.erase_vertex(vertex);
+
+                    for(auto ot = it; ot != vertexSubset.end(); ++ot)
+                        --(*ot);
+                }
+
+                const size_t subsetSize = vertexSubset.size();
+
+                if(subGraph.edge_size() == 0 && s > subsetSize) {
+                    s = subsetSize;
+                    out = oldVertexSubset;
+                }
+            }
+
+            return {s, out};
         }
     };
 }
