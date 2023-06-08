@@ -1,0 +1,6 @@
+add_executable(vertex_cover_test vertex_cover_test.cpp)
+target_link_libraries(vertex_cover_test graph)
+
+enable_testing()
+
+add_test(NAME Graph_VertexCover COMMAND $<TARGET_FILE:vertex_cover_test>)

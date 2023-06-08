@@ -6,6 +6,8 @@
 #include <vector>
 #include <functional>
 
+#include "graph.h"
+
 #define ensure(EXP) if(!(EXP)) return 1;
 #define TEST_CASE
 
