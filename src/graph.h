@@ -1,6 +1,7 @@
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
+#include <iostream>
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
@@ -89,7 +90,7 @@ namespace graph {
                 if(_adjacencyMatrix[first][second]._enabled == false)
                     ++_edgeCount;
 
-                _adjacencyMatrix[first][second] = EdgeInstance{true};
+                _adjacencyMatrix[first][second]._enabled = true;
             }
 
             bool is_edge_exist(const size_t& first, const size_t& second) const {
@@ -105,7 +106,7 @@ namespace graph {
                 if(_adjacencyMatrix[first][second]._enabled == true)
                     --_edgeCount;
                 
-                _adjacencyMatrix[first][second] = EdgeInstance{false};
+                _adjacencyMatrix[first][second]._enabled = false;
             }
 
             void erase_no_direct_edge(const size_t& first, const size_t& second) {
@@ -173,18 +174,18 @@ namespace graph {
         template<class G>
         static pair<size_t, vector<int>> vertex_cover_greedy_algorithm_pro(G graph) {
             size_t s = 0;
-            vector<size_t> vertexSubset;
+            vector<int> vertexSubset;
 
             while (graph.edge_size() / 2 > 0) {
                 const auto vertex = find_max_deg_vertex(graph);
                 graph.erase_vertex(vertex);
-                vertexSubset.push_back(vertex);
+                vertexSubset.push_back(static_cast<int>(vertex));
                 ++s;
             }
 
             sort(vertexSubset.begin(), vertexSubset.end());
 
-            return {s, vertexSubset};
+            return make_pair(s, vertexSubset);
         }
 
         template<class G>
@@ -256,11 +257,16 @@ namespace graph {
 
                 if(subGraph.edge_size() == 0 && s > subsetSize) {
                     s = subsetSize;
-                    out = oldVertexSubset;
+
+                    out.clear();
+
+                    for(const auto& v : oldVertexSubset) {
+                        out.push_back(static_cast<int>(v));
+                    }
                 }
             }
 
-            return {s, out};
+            return make_pair(s, out);
         }
     };
 }
