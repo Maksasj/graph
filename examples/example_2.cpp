@@ -7,7 +7,7 @@ int main() {
     using namespace std;
     using namespace graph;
 
-    Graph<int> g;
+    Graph<int, int> g;
 
     g.add_vertex(); // 0
     g.add_vertex(); // 1
@@ -24,6 +24,13 @@ int main() {
     g.add_no_direct_edge(2, 5);
     g.add_no_direct_edge(2, 6);
     g.add_no_direct_edge(4, 5);
+
+    g.traverse();
+
+    std::cout << "Greedy: "<< Algorithm::vertex_cover_greedy_algorithm(g) << "\n";
+    std::cout << "Brute force: "<< Algorithm::vertex_cover_brute_force_algorithm(g) << "\n";
+
+    g.erase_vertex(2);
 
     g.traverse();
 

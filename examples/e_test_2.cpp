@@ -10,14 +10,29 @@ void test_case(const std::string& name, const graph::Graph<int, int>& graph, con
     cout << "Test case: \"" << name << "\"\n";
     cout << "    Expected result: " << expect << "\n";
     {
-        auto v = Algorithm::vertex_cover_greedy_algorithm(graph); 
-        cout << "    Greedy result: " << v << "\n";
+        auto v = Algorithm::vertex_cover_greedy_algorithm_pro(graph); 
+
+        cout << "    Set: ";
+        for(auto p : v.second) {
+            cout << p << " ";
+        }
+
+        cout << "\n";
+
+        cout << "    Greedy result: " << v.first << "\n";
     }
     {
-        auto v = Algorithm::vertex_cover_brute_force_algorithm(graph); 
-        cout << "    Brute force result: " << v << "\n";
+        auto v = Algorithm::vertex_cover_brute_force_algorithm_pro(graph); 
+        cout << "    Brute force result: " << v.first << "\n";
 
-        if(v != expect) {
+        cout << "    Set: ";
+        for(auto p : v.second) {
+            cout << p << " ";
+        }
+
+        cout << "\n";
+        
+        if(v.first != expect) {
             cout << "    FAILED";
         }
     }

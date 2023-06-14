@@ -4,7 +4,7 @@ int main() {
     using namespace graph;
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_no_direct_edge(0, 0);
 
@@ -14,7 +14,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_no_direct_edge(0, 1);
@@ -25,7 +25,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -39,7 +39,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -55,7 +55,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -68,7 +68,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -83,7 +83,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -100,7 +100,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -111,7 +111,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -131,7 +131,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -155,7 +155,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -179,7 +179,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
@@ -199,7 +199,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -222,7 +222,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -242,7 +242,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -269,7 +269,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -293,7 +293,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -317,7 +317,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -343,7 +343,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -361,7 +361,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -378,7 +378,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -398,7 +398,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -424,7 +424,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -459,7 +459,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex(); // 0
         g.add_vertex(); // 1
@@ -491,7 +491,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex(); // 0
         g.add_vertex(); // 1
@@ -523,7 +523,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex(); // 0
         g.add_vertex(); // 1
@@ -572,7 +572,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex(); // 0
         g.add_vertex(); // 1
@@ -613,7 +613,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();
@@ -657,7 +657,7 @@ int main() {
     }
     
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex(); // 0
         g.add_vertex(); // 1
@@ -683,7 +683,7 @@ int main() {
     }
 
     TEST_CASE {
-        Graph<int> g;
+        Graph<int, int> g;
 
         g.add_vertex();
         g.add_vertex();

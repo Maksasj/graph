@@ -7,7 +7,7 @@ int main() {
     using namespace std;
     using namespace graph;
 
-    Graph<int> g;
+    Graph<int, int> g;
 
     g.add_vertex();
     g.add_vertex();
