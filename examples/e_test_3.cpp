@@ -1,38 +1,81 @@
-#include "test.h"
+#include <iostream>
+#include <string>
+
+#include "graph.h"
+
+void test_case(const std::string& name, const graph::Graph<int, int>& graph, const size_t expect) {
+    using namespace std;
+    using namespace graph;
+    
+    cout << "Test case: \"" << name << "\"\n";
+    cout << "    Expected result: " << expect << "\n";
+    {
+        auto v = Algorithm::vertex_cover_greedy_algorithm_pro(graph); 
+
+        cout << "    Set: ";
+        for(auto& p : v.second) {
+            cout << p << " ";
+        }
+
+        cout << "\n";
+
+        cout << "    Greedy result: " << v.first << "\n";
+    }
+    {
+        auto v = Algorithm::vertex_cover_brute_force_algorithm_super_pro(graph); 
+        cout << "    Brute force result: " << v.first << "\n";
+
+
+        cout << "    Set: ";
+        for(auto& p : v.second[v.second.size() - 1]) {
+            cout << p << " ";
+        }
+
+        cout << "\n";
+
+        // for(auto& p1 : v.second) {
+        //     cout << "    ";
+        //     for(auto& p : p1) {
+        //         cout << p << " ";
+        //     }
+        //     cout << "\n";
+        // }
+        
+        if(v.first != expect) {
+            cout << "    FAILED";
+        }
+    }
+    cout << "\n";
+}
 
 int main() {
+    using namespace std;
     using namespace graph;
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 0);
+        test_case("Empty grapg #0", g, 0);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_no_direct_edge(0, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 1);
+        test_case("Single vertex loop #1", g, 1);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_no_direct_edge(0, 1);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 1);
+        test_case("Single edge #2", g, 1);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -41,12 +84,10 @@ int main() {
         g.add_edge(0, 2);
         g.add_edge(1, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 2);
+        test_case("Single polygon #3", g, 2);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -57,12 +98,10 @@ int main() {
         g.add_no_direct_edge(2, 3);
         g.add_no_direct_edge(3, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 2);
+        test_case("Single square #4", g, 2);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -70,12 +109,10 @@ int main() {
         g.add_no_direct_edge(0, 1);
         g.add_no_direct_edge(0, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 1);
+        test_case("Short line #5", g, 1);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -85,12 +122,10 @@ int main() {
         g.add_no_direct_edge(1, 2);
         g.add_no_direct_edge(2, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 2);
+        test_case("Mediums line #6", g, 2);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -102,23 +137,19 @@ int main() {
         g.add_no_direct_edge(2, 3);
         g.add_no_direct_edge(3, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 2);
+        test_case("Long line #7", g, 2);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
         g.add_vertex();
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 0);
+        test_case("No edge polygon #8", g, 0);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -133,12 +164,10 @@ int main() {
         g.add_no_direct_edge(1, 4);
         g.add_no_direct_edge(4, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Two merged polygons #9", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -157,12 +186,10 @@ int main() {
         g.add_no_direct_edge(2, 6);
         g.add_no_direct_edge(6, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Two merged squares #10", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -181,12 +208,10 @@ int main() {
         g.add_no_direct_edge(2, 6);
         g.add_no_direct_edge(6, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Two merged squares 1 #10", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
         g.add_vertex();
         g.add_vertex();
@@ -201,12 +226,11 @@ int main() {
         g.add_no_direct_edge(4, 0);
         g.add_no_direct_edge(3, 1);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
 
-        ensure(p.first == 3);
+        test_case("Merged polygon and square #11", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -224,12 +248,11 @@ int main() {
         g.add_no_direct_edge(5, 0);
         g.add_no_direct_edge(1, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Two merged squares 2 #12", g, 3);
     }
 
-    TEST_CASE {
+
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -244,12 +267,10 @@ int main() {
         g.add_no_direct_edge(3, 4);
         g.add_no_direct_edge(4, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Pentagon #13", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -271,12 +292,10 @@ int main() {
         g.add_no_direct_edge(4, 1);
         g.add_no_direct_edge(5, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 4);
+        test_case("3d Triangle #14", g, 4);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -295,12 +314,10 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(6, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Shape 1 #15", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -319,12 +336,10 @@ int main() {
         g.add_no_direct_edge(1, 4);
         g.add_no_direct_edge(2, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Shape 2 #16", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -345,12 +360,10 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(0, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 4);
+        test_case("Three polygons #17", g, 4);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -363,12 +376,10 @@ int main() {
         g.add_no_direct_edge(2, 0);
         g.add_no_direct_edge(1, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 2);
+        test_case("Weird 1 #18", g, 2);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -380,12 +391,10 @@ int main() {
         g.add_no_direct_edge(0, 2);
         g.add_no_direct_edge(0, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 1);
+        test_case("Weird 2 #19", g, 1);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -400,12 +409,10 @@ int main() {
         g.add_no_direct_edge(4, 3);
         g.add_no_direct_edge(4, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("Weird 3 #20", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -426,12 +433,10 @@ int main() {
         g.add_no_direct_edge(6, 7);
         g.add_no_direct_edge(2, 5);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 4);
+        test_case("Shape 3 #21", g, 4);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -461,12 +466,10 @@ int main() {
         g.add_no_direct_edge(8, 5);
         g.add_no_direct_edge(8, 7);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 5);
+        test_case("Xmas tree #22", g, 5);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex(); // 0
@@ -493,12 +496,10 @@ int main() {
         g.add_no_direct_edge(2, 5);
         g.add_no_direct_edge(2, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("nn 1 #23", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex(); // 0
@@ -525,12 +526,10 @@ int main() {
         g.add_no_direct_edge(2, 5);
         g.add_no_direct_edge(2, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("nn 1 #23", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex(); // 0
@@ -574,12 +573,10 @@ int main() {
         g.add_no_direct_edge(2, 9);
         g.add_no_direct_edge(2, 10);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 3);
+        test_case("nn 2 #24", g, 3);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex(); // 0
@@ -615,12 +612,10 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(7, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 4);
+        test_case("nn 3 connected #25", g, 4);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -659,12 +654,10 @@ int main() {
         g.add_no_direct_edge(8, 9);
         g.add_no_direct_edge(6, 10);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 6);
+        test_case("A lot of polygons #26", g, 6);
     }
     
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex(); // 0
@@ -685,12 +678,10 @@ int main() {
         g.add_no_direct_edge(6, 5);
         g.add_no_direct_edge(6, 7);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 4);
+        test_case("Two lines #27", g, 4);
     }
 
-    TEST_CASE {
+    {
         Graph<int, int> g;
 
         g.add_vertex();
@@ -717,10 +708,8 @@ int main() {
         
         g.add_no_direct_edge(7, 8);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
-
-        ensure(p.first == 5);
+        test_case("Weird 4 #28", g, 5);
     }
 
-    return 0;   
+    return 0;
 }

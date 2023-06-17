@@ -14,3 +14,9 @@ target_link_libraries(e_test_1 graph)
 
 add_executable(e_test_2 e_test_2.cpp)
 target_link_libraries(e_test_2 graph)
+
+add_executable(e_test_3 e_test_3.cpp)
+target_link_libraries(e_test_3 graph)
+
+add_executable(e_test_4 e_test_4.cpp)
+target_link_libraries(e_test_4 graph)

@@ -4,7 +4,11 @@ target_link_libraries(vertex_cover_test graph)
 add_executable(vertex_cover_pro_test vertex_cover_pro_test.cpp)
 target_link_libraries(vertex_cover_pro_test graph)
 
+add_executable(vertex_cover_super_pro_test vertex_cover_super_pro_test.cpp)
+target_link_libraries(vertex_cover_super_pro_test graph)
+
 enable_testing()
 
 add_test(NAME Graph_VertexCover COMMAND $<TARGET_FILE:vertex_cover_test>)
 add_test(NAME Graph_VertexCoverPro COMMAND $<TARGET_FILE:vertex_cover_pro_test>)
+add_test(NAME Graph_VertexCoverSuperPro COMMAND $<TARGET_FILE:vertex_cover_super_pro_test>)

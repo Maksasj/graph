@@ -6,7 +6,7 @@ int main() {
     TEST_CASE {
         Graph<int, int> g;
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 0);
     }
@@ -16,7 +16,7 @@ int main() {
         g.add_vertex();
         g.add_no_direct_edge(0, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 1);
     }
@@ -27,7 +27,7 @@ int main() {
         g.add_vertex();
         g.add_no_direct_edge(0, 1);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 1);
     }
@@ -41,7 +41,7 @@ int main() {
         g.add_edge(0, 2);
         g.add_edge(1, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 2);
     }
@@ -57,7 +57,7 @@ int main() {
         g.add_no_direct_edge(2, 3);
         g.add_no_direct_edge(3, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 2);
     }
@@ -70,7 +70,7 @@ int main() {
         g.add_no_direct_edge(0, 1);
         g.add_no_direct_edge(0, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 1);
     }
@@ -85,7 +85,7 @@ int main() {
         g.add_no_direct_edge(1, 2);
         g.add_no_direct_edge(2, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 2);
     }
@@ -102,7 +102,7 @@ int main() {
         g.add_no_direct_edge(2, 3);
         g.add_no_direct_edge(3, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 2);
     }
@@ -113,7 +113,7 @@ int main() {
         g.add_vertex();
         g.add_vertex();
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 0);
     }
@@ -133,7 +133,7 @@ int main() {
         g.add_no_direct_edge(1, 4);
         g.add_no_direct_edge(4, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -157,7 +157,7 @@ int main() {
         g.add_no_direct_edge(2, 6);
         g.add_no_direct_edge(6, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -181,7 +181,7 @@ int main() {
         g.add_no_direct_edge(2, 6);
         g.add_no_direct_edge(6, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -201,7 +201,7 @@ int main() {
         g.add_no_direct_edge(4, 0);
         g.add_no_direct_edge(3, 1);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -224,7 +224,7 @@ int main() {
         g.add_no_direct_edge(5, 0);
         g.add_no_direct_edge(1, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -244,7 +244,7 @@ int main() {
         g.add_no_direct_edge(3, 4);
         g.add_no_direct_edge(4, 0);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -271,7 +271,7 @@ int main() {
         g.add_no_direct_edge(4, 1);
         g.add_no_direct_edge(5, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 4);
     }
@@ -295,7 +295,7 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(6, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -319,7 +319,7 @@ int main() {
         g.add_no_direct_edge(1, 4);
         g.add_no_direct_edge(2, 4);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -345,7 +345,7 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(0, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 4);
     }
@@ -363,7 +363,7 @@ int main() {
         g.add_no_direct_edge(2, 0);
         g.add_no_direct_edge(1, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 2);
     }
@@ -380,7 +380,7 @@ int main() {
         g.add_no_direct_edge(0, 2);
         g.add_no_direct_edge(0, 3);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 1);
     }
@@ -400,7 +400,7 @@ int main() {
         g.add_no_direct_edge(4, 3);
         g.add_no_direct_edge(4, 2);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -426,7 +426,7 @@ int main() {
         g.add_no_direct_edge(6, 7);
         g.add_no_direct_edge(2, 5);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 4);
     }
@@ -461,7 +461,7 @@ int main() {
         g.add_no_direct_edge(8, 5);
         g.add_no_direct_edge(8, 7);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 5);
     }
@@ -493,7 +493,7 @@ int main() {
         g.add_no_direct_edge(2, 5);
         g.add_no_direct_edge(2, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -525,7 +525,7 @@ int main() {
         g.add_no_direct_edge(2, 5);
         g.add_no_direct_edge(2, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -574,7 +574,7 @@ int main() {
         g.add_no_direct_edge(2, 9);
         g.add_no_direct_edge(2, 10);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 3);
     }
@@ -615,7 +615,7 @@ int main() {
         g.add_no_direct_edge(5, 6);
         g.add_no_direct_edge(7, 6);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 4);
     }
@@ -659,7 +659,7 @@ int main() {
         g.add_no_direct_edge(8, 9);
         g.add_no_direct_edge(6, 10);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 6);
     }
@@ -685,7 +685,7 @@ int main() {
         g.add_no_direct_edge(6, 5);
         g.add_no_direct_edge(6, 7);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 4);
     }
@@ -717,7 +717,7 @@ int main() {
         
         g.add_no_direct_edge(7, 8);
 
-        auto p = Algorithm::vertex_cover_brute_force_algorithm_pro(g);
+        auto p = Algorithm::vertex_cover_brute_force_algorithm_super_pro(g);
 
         ensure(p.first == 5);
     }

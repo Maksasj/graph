@@ -246,7 +246,7 @@ namespace graph {
         size_t s = 0;
         vector<int> vertexSubset;
 
-        while (graph.edge_size() / 2 > 0) {
+        while ((graph.edge_size() /2 )> 0) {
             const auto vertex = find_max_deg_vertex(graph);
             vertexSubset.push_back(graph._vertices[vertex]);
             graph.erase_vertex(vertex);
@@ -373,17 +373,41 @@ namespace graph {
             const size_t subsetSize = vertexSubset.size();
 
             if(subGraph.edge_size() == 0) {
-                vector<int> out;
-
-                for(const auto& v : oldVertexSubset) {
-                    out.push_back(static_cast<int>(v));
+                if(subsetSize < s) {
+                    s = subsetSize;
+                //     coverSets.clear();
                 }
 
-                coverSets.push_back(out);
+                // if(subsetSize == s) {
+                    vector<int> out;
+                    for(const auto& v : oldVertexSubset) {
+                        out.push_back(static_cast<int>(v));
+                    }
+
+                    sort(out.begin(), out.end(), greater<int>());
+
+                    coverSets.push_back(out);
+                // }
             }
         }
 
-        sort(out.begin(), out.end(), greater<int>());
+        sort(coverSets.begin(), coverSets.end(), [](const vector<int>& a, const vector<int>& b) {
+            if(a.size() == b.size()) {
+                const size_t size = a.size();
+
+                for(size_t i = 0; i < size; ++i) {
+                    if(a[i] != b[i]) {
+                        return a[i] < b[i];
+                    }
+                }
+
+                return false;
+            } else {
+                return a.size() > b.size();
+            }
+
+            return false;
+        });
 
         return std::make_pair(s, coverSets);
     }
